@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Hello programer........</h1>
-    <!-- <h2>My name is {{user}}</h2> -->
+    <h2>My name is {{user}}</h2>
     <form action="/home/" method="POST">
         {% csrf_token %}
         <input type="text" name="username" placeholder="Enter your username">
@@ -19,7 +19,7 @@
 
     <!-- todo list  -->
     <div>
-        {% for t in user %}
+        {% for t in todo %}
             <h1>{{t.todo}}</h1>
         {% endfor %}
     </div>
