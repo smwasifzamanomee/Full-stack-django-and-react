@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello programer........</h1>
+    <!-- <h2>My name is {{user}}</h2> -->
+    <form action="/home/" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Enter your username">
+        <input type="password" name="password" placeholder="Enter your password">
+        <input type="submit" value="Login">
+    </form>
+    <p>{{data}}</p>
+
+    <!-- todo list  -->
+    <div>
+        {% for t in user %}
+            <h1>{{t.todo}}</h1>
+        {% endfor %}
+    </div>
+</body>
+</html>
