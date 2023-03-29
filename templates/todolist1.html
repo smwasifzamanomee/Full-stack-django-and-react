@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: "#da373d",
+                    },
+                },
+            },
+        };
+    </script>
+    <title>Todo list 1</title>
+</head>
+
+<body class="p-10">
+    <h1 class="text-3xl font-bold underline text-clifford text-red-400 text-center p-4">
+        Book List
+    </h1>
+    <form class="text-center p-4" method="POST">
+        {% csrf_token %}
+        {{Data.form}}
+        <button class="bg-blue-300 rounded-full text-black w-[100px]">Add</button>
+    </form>
+    </div>
+    <table class="min-w-full divide-y divide-gray-300">
+        <thead>
+            <tr class="divide-x divide-gray-200">
+                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0 text-center">
+                    Sl No
+                </th>
+                <th scope="col" class="py-3.5 pl-4 pr-4 text-left text-sm font-semibold text-gray-900 sm:pl-0 text-center">
+                    Text
+                </th>
+                <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 text-center">
+                    Date
+                </th>
+                <th scope="col" class="px-4 py-3.5 text-left text-sm font-semibold text-gray-900 text-center">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 bg-white">
+            {% for todo in Data.TodolistData %}
+            <tr class="divide-x divide-gray-200">
+                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0 text-center">
+                    {{ todo.id }}
+                </td>
+                <td class="whitespace-nowrap py-4 pl-4 pr-4 text-sm font-medium text-gray-900 sm:pl-0 text-center">
+                    {{ todo.text }}
+                </td>
+                <td class="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    {{ todo.date }}
+                </td>
+                <td class="whitespace-nowrap p-4 text-sm text-gray-500 text-center">
+                    <a href="/todolist1/update/{{todo.id}}" class="bg-yellow-300 rounded-full text-black w-[100px]">update</a>
+                    <a href="/todolist1/delete/{{todo.id}}/" class="bg-red-500 rounded-full text-white w-[100px]">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+            <!-- More people... -->
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Update</title>
+</head>
+<body>
+    <h1>Update Todolist {{id}}</h1>
+    <form action="/todolist1/updateData/" method="POST">
+        {% csrf_token %}
+        <input type="text" name="update" value ={{Context.Data}} />
+        <input type="hidden" name="id" value={{Context.Data.id}} />
+        <button class="bg-green-300 rounded-full text-black w-[100px]">Update</button>
+    </form>
+</body>
+</html>
