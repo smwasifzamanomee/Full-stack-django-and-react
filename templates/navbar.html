@@ -39,7 +39,7 @@
 
             {% if user.is_authenticated %}
             <a href="#" class=" text-white rounded-md px-3 py-2 text-sm font-medium" >New Post</a>
-            <a href="#" class=" text-white rounded-md px-3 py-2 text-sm font-medium" >Profile</a>            
+            <a href="{% url 'profile' %}" class=" text-white rounded-md px-3 py-2 text-sm font-medium" >Profile</a>            
             <a href="{% url 'logout' %}" class=" text-white rounded-md px-3 py-2 text-sm font-medium" >Logout</a>
             {% else %}
             <a href="{% url 'login' %}" class=" text-white rounded-md px-3 py-2 text-sm font-medium" >Login</a>
