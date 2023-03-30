@@ -13,10 +13,8 @@
                     </div>
                     <div class="flex px-10 h-10 gap-4">
                         {% if object.author == request.user %}
-                        <a href="#" class="text-2xl font-medium mb-1 bg-gray-400 text-white rounded
-                         text-center w-[100px]">Update
-                        </a>
-                        <a href="#" class="text-2xl font-medium mb-1 bg-red-500 text-white rounded text-center w-[100px]">Delete</a>
+                        <a href="{% url 'post-update' object.id  %}" class="text-2xl font-medium mb-1 bg-gray-400 text-white rounded text-center w-[100px]">Update</a>
+                        <a href="{% url 'post-delete' object.id  %}" class="text-2xl font-medium mb-1 bg-red-500 text-white rounded text-center w-[100px]">Delete</a>
                         </a>
                         {% endif %}
                     </div>
@@ -26,7 +24,7 @@
                     <h1 class="text-2xl text-blue-600 font-medium mb-1 underline">{{object.author}}</h1>
                 </a>
                
-                <a href="{% url 'post-detail' post.id %}">
+                <a href="{% url 'post-detail' object.id %}">
                     <i class="text-2xl font-medium mb-1 underline">{{object.title}}</i>
                 </a>
                 <p class="py-4">{{object.date_posted}}</p>

@@ -4,10 +4,38 @@
 
 {% block content %}
 
-<h1>{{user.username}}</h1>
-<h1>{{user.first_name}}</h1>
-<h1>{{user.last_name}}</h1>
-<h1>{{user.email}}</h1>
-<img src="{{ user.profile.image.url }}" alt="Profile Picture">
+<div class="container mx-auto mt-10">
+    <div class="flex justify-center">
+        <div class="w-1/2 p-6 rounded-lg bg-gray-400">
+            <div>
+
+                <img src="{{ user.profile.image.url }}" alt="Profile Picture">
+                <h1>Username = {{user.username}}</h1>
+                <h1>First Name = {{user.first_name}}</h1>
+                <h1>Last Name = {{user.last_name}}</h1>
+                <h1>Email = {{user.email}}</h1>
+
+            </div>
+            <div>
+                <form  class="bg-red-200" method="POST" enctype="multipart/form-data">
+                    
+                    {% csrf_token %}
+                    {{ p_form }}
+                    {{ u_form }}
+                    <button type="submit"
+                        class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Update</button>
+                </form>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
 
 {% endblock %}
