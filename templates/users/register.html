@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+<div class="container mx-auto flex justify-center items-center mt-10">
+    <div class="flex justify-center">
+        <div class="w-1/2 bg-gray-200 text-black p-6 rounded-lg">
+            <h1 class="text-3xl text-center">Register</h1>
+            <form action="user/login/" method="POST" class="mt-6 text-black">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
