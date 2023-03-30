@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from django.contrib.auth.forms import UserCreationForm
@@ -14,5 +14,5 @@ class UserRegister(View):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'users/login.html')
-        return render(request, 'users/register.html', {'form': form})
+            return redirect('login')
+        return redirect('register')

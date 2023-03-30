@@ -8,7 +8,7 @@
     <div class="flex justify-center">
         <div class="bg-gray-200 text-black p-6 rounded-lg">
             <h1 class="text-3xl text-center">Login</h1>
-            <form action="/" method="POST" class="mt-6 text-black">
+            <form method="POST" class="mt-6 text-black">
                 {% csrf_token %}
                 {{form.as_p}}
                 <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Login</button>
