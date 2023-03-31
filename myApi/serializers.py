@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
-from .models import Post
+from .models import Todo
 
-class PostSerializer(ModelSerializer):
+class TodoSerializer(ModelSerializer):
     class Meta:
-        model = Post
+        model = Todo
         fields = '__all__'

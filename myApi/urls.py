@@ -6,13 +6,9 @@ from myApi import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('posts', views.PostView, basename='posts')
+router.register('todos', views.TodoView, basename='todos')
 
 
 urlpatterns = [
-    # when i get to get and post methods
-    # path('posts/', views.PostView.as_view()),
-    
-    # But when i get to the get, post, put and delete methods
     path('api/', include(router.urls)),
 ]
