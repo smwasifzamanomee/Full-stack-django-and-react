@@ -1,7 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useStateValue } from '../state/StateProvider';
 
 const Navbar = () => {
+    const [{profile},  ] = useStateValue(null);
+
+    const handdleLogout = () => {
+        window.localStorage.removeItem('token')
+        window.location.href = "/"
+    }
     return (
         <div>
             <nav className="bg-gray-800">
@@ -15,16 +22,21 @@ const Navbar = () => {
                             <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
                                 <Link to="/" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</Link>
 
-                                <Link to="/About" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</Link>
+                                <Link to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</Link>
                             </div>
                         </div>
                         <div className="flex items-center">
                             <div className="flex-shrink-0">
-                                <Link to="" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">New Post</Link>
-                                <Link to="/profile" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Profile</Link>
-                                <Link to="" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</Link>
-                                <Link to="" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Register</Link>
-                                <Link to="" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</Link>
+                                {profile !== null ? (
+                                    <>
+                                        <Link to={'/newpost'} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">New Post</Link>
+                                        <Link to="/profile" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Profile</Link>
+                                        <Link onClick={handdleLogout} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</Link>
+                                    </>
+                                ) : (<>
+                                    <Link to={"/login"} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Login</Link>
+                                    <Link to={"/register"} className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Register</Link>
+                                </>)}
                             </div>
 
                         </div>

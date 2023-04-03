@@ -1,24 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import { useStateValue } from "../state/StateProvider";
 
 const Profile = () => {
-    const [profile, setProfile] = useState(null);
-
-    useEffect(() => {
-        const options = {
-            method: 'GET',
-            url: 'http://127.0.0.1:8000/api/profile/',
-            headers: { Authorization: 'Token 089ce34e2164a82b394cedf4336311fcc058fedb' }
-        };
-
-        axios.request(options).then(function (response) {
-            console.log(response.data);
-            setProfile(response.data['data']);
-        }).catch(function (error) {
-            console.error(error);
-        });
-
-    }, [])
+    const [{profile},  ] = useStateValue();
     return (
         <div className="flex items-center h-screen w-full justify-center">
            
