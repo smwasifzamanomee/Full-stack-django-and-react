@@ -28,3 +28,11 @@ class ProfileViewSet(views.APIView):
         
         return Response({"message": "response successful", "data": serializer.data})
 
+class RegisterViewSet(views.APIView):
+    def post(self, request):
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({"message": "user created successfully", "data": serializer.data})
+        else:
+            return Response({"message": "user not created", "data": serializer.errors})
